@@ -4367,57 +4367,63 @@ function getNextMarketing() {
     };
 }
 
-// ===== UPDATED FORM SUBMISSION =====
-function submitFormData(name, city, phone, job, income) {
-    const marketing = getNextMarketing();
-    
-    // Format pesan yang lebih menarik dengan emoji dan bold text
-    const message = `Assalamu'alaikum Warahmatullahi Wabarakatuh
-    
-*📌 DATA PEMESANAN KERTAMULYA RESIDENCE*
+// ===== FORM SUBMISSION =====
+function initializeFormSubmission() {
+    const form = document.getElementById('modalContactForm');
+    if (!form) return;
 
-👤 *Nama Lengkap*: ${name}
-🏙️ *Kota Asal/Tinggal*: ${city}
-📱 *Nomor WhatsApp*: ${phone}
-💼 *Pekerjaan*: ${job}
-💰 *Penghasilan Per Bulan*: ${income}
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('modalName').value;
+        const city = document.getElementById('modalCity').value;
+        const phone = document.getElementById('modalPhone').value;
+        const job = document.getElementById('modalJob').value;
+        const income = document.getElementById('modalIncome').value;
 
-*📢 INFO PROMO TERBARU*
-🔹 Booking Fee *Rp500.000* saja
-🔹 *DP 0%* via Bank Syariah
-🔹 Cicilan mulai *Rp1 Juta/Bulan*
-🔹 Gratis *Motor Listrik* setelah 6x angsuran
+        // Validate phone number
+        const cleanPhone = phone.replace(/\D/g, '');
+        if (cleanPhone.length < 10) {
+            alert('Nomor WhatsApp tidak valid');
+            return;
+        }
 
-Mohon info detail tentang:
-1. Spesifikasi rumah lengkap
-2. Cara pengajuan KPR Syariah
-3. Jadwal survey lokasi
-
-*🤝 DITANGANI OLEH*
-${marketing.role}: *${marketing.name}*
-    
-Terima kasih. Wassalamu'alaikum Warahmatullahi Wabarakatuh`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${marketing.phone}?text=${encodedMessage}`;
-    
-    // Buka WhatsApp
-    window.open(whatsappUrl, '_blank');
-    
-    // Tampilkan konfirmasi
-    showWaConfirm(marketing.name);
-    
-    // Reset form
-    document.getElementById('modalContactForm').reset();
-    
-    // Tracking
-    if (typeof fbq !== 'undefined') {
-        fbq('track', 'Lead');
-    }
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'conversion');
-    }
+        // Get marketing person
+        const marketing = getNextMarketing();
+        
+        // Format WhatsApp message
+        const message = `Assalamu'alaikum Warahmatullahi Wabarakatuh\n\n*📌 DATA PEMESANAN KERTAMULYA RESIDENCE*\n\n👤 *Nama Lengkap*: ${name}\n🏙️ *Kota Asal/Tinggal*: ${city}\n📱 *Nomor WhatsApp*: ${phone}\n💼 *Pekerjaan*: ${job}\n💰 *Penghasilan Per Bulan*: ${income}\n\n*📢 INFO PROMO TERBARU*\n🔹 Booking Fee *Rp500.000* saja\n🔹 *DP 0%* via Bank Syariah\n🔹 Cicilan mulai *Rp1 Juta/Bulan*\n🔹 Gratis *Motor Listrik* setelah 6x angsuran\n\nMohon info detail tentang:\n1. Spesifikasi rumah lengkap\n2. Cara pengajuan KPR Syariah\n3. Jadwal survey lokasi\n\n*🤝 DITANGANI OLEH*\n${marketing.role}: *${marketing.name}*`;
+        
+        // Encode message for URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Create WhatsApp URL
+        const whatsappUrl = `https://wa.me/${marketing.phone}?text=${encodedMessage}`;
+        
+        // Open WhatsApp
+        window.open(whatsappUrl, '_blank');
+        
+        // Show confirmation
+        showWaConfirm(marketing.name);
+        
+        // Close form modal
+        closeFormModal();
+        
+        // Reset form
+        form.reset();
+        
+        // Track conversion
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Lead');
+        }
+    });
 }
+
+// Panggil fungsi inisialisasi saat DOM siap
+document.addEventListener('DOMContentLoaded', function() {
+    initializeFormSubmission();
+});
 
 // ===== WHATSAPP CONFIRMATION =====
 window.showWaConfirm = function(marketingName) {
