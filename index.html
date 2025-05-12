@@ -4182,7 +4182,7 @@ function submitFormData(name, city, phone, job, income) {
     const marketing = getNextMarketing();
     
     // Format pesan yang benar: user yang menyapa marketing
-    const message = `Assalamu'alaikum Bapak/Ibu *${marketing.name}*,\n\nSaya *${name}* tertarik dengan Kertamulya Residence dan ingin info lebih lanjut.\n\nBerikut data saya:\n🔹 Kota: ${city}\n🔹 WhatsApp: ${phone}\n🔹 Pekerjaan: ${job}\n🔹 Penghasilan: ${income}\n\nMohon info detail tentang:\n- Promo DP 0%\n- Spesifikasi rumah\n- Cara pengajuan KPR\n\nTerima kasih.`;
+    const message = `Assalamu'alaikum Ibu *${marketing.name}*,\n\nSaya *${name}* tertarik dengan Kertamulya Residence dan ingin info lebih lanjut.\n\nBerikut data saya:\n🔹 Kota: ${city}\n🔹 WhatsApp: ${phone}\n🔹 Pekerjaan: ${job}\n🔹 Penghasilan: ${income}\n\nMohon info detail tentang:\n- Promo DP 0%\n- Spesifikasi rumah\n- Cara pengajuan KPR\n\nTerima kasih.`;
     
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${marketing.phone}?text=${encodedMessage}`;
@@ -4205,29 +4205,43 @@ function submitFormData(name, city, phone, job, income) {
     }
 }
 
-// ===== UPDATE ALL CTA BUTTONS =====
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle all CTA buttons
-    document.querySelectorAll('[onclick="showFormModal()"], .btn-primary').forEach(button => {
-        button.addEventListener('click', function(e) {
-            // For buttons that should show form
-            if (!this.classList.contains('whatsapp-float')) {
-                e.preventDefault();
-                showFormModal();
-            }
-        });
-    });
-
-    // Handle WhatsApp float button
-    const whatsappFloat = document.querySelector('.whatsapp-float');
-    if (whatsappFloat) {
-        whatsappFloat.addEventListener('click', function(e) {
-            e.preventDefault();
-            const marketing = getNextMarketing();
-            window.open(`https://wa.me/${marketing.phone}?text=Assalamu'alaikum%20${encodeURIComponent(marketing.name)},%20saya%20tertarik%20dengan%20Kertamulya%20Residence%20dan%20mau%20info%20lebih%20lanjut`, '_blank');
-        });
+// ===== WHATSAPP CONFIRMATION =====
+window.showWaConfirm = function(marketingName) {
+    const modal = document.getElementById('waConfirmModal');
+    if (!modal) return;
+    
+    // Update modal content dengan nama marketing
+    const confirmTitle = modal.querySelector('.wa-confirm-title');
+    if (confirmTitle) {
+        confirmTitle.textContent = `Formulir Terkirim!`;
     }
-});
+    
+    const confirmSubtitle = modal.querySelector('.wa-confirm-subtitle');
+    if (confirmSubtitle) {
+        confirmSubtitle.textContent = `Anda akan diarahkan ke WhatsApp ${marketingName}`;
+    }
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    let count = 5;
+    const countdownElement = document.getElementById('countdown');
+    if (countdownElement) {
+        countdownElement.textContent = count;
+        
+        const countdownInterval = setInterval(() => {
+            count--;
+            countdownElement.textContent = count;
+            
+            if (count <= 0) {
+                clearInterval(countdownInterval);
+                if (!window.whatsappOpened) {
+                    window.whatsappOpened = true;
+                }
+            }
+        }, 1000);
+    }
+};
 
 // ===== WHATSAPP CONFIRMATION =====
 window.showWaConfirm = function(marketingName) {
