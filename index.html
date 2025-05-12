@@ -4181,13 +4181,19 @@ function initializeFormSubmission() {
 function submitFormData(name, city, phone, job, income) {
     const marketing = getNextMarketing();
     
-    const message = `Assalamu'alaikum Bpk/Ibu ${name},\n\nSaya *${marketing.name}* dari Tim Marketing Kertamulya Residence. Terima kasih atas minat Anda terhadap perumahan syariah kami.\n\nBerikut detail informasi yang Anda minta:\n\n🔹 Nama: ${name}\n🔹 Kota: ${city}\n🔹 WhatsApp: ${phone}\n🔹 Pekerjaan: ${job}\n🔹 Penghasilan: ${income}\n\n📌 Promo Spesial untuk Anda:\n- Booking Fee 500rb\n- Motor Listrik Gratis\n- Cicilan Mulai Rp1 Juta/Bulan\n\nMohon konfirmasi kapan waktu yang tepat untuk kami jelaskan lebih detail via WhatsApp atau telepon. Atau Anda bisa langsung klik link berikut untuk chat langsung:\nhttps://wa.me/${marketing.phone}?text=Saya%20${encodeURIComponent(name)}%20mau%20info%20lebih%20lanjut%20tentang%20Kertamulya%20Residence\n\nTerima kasih,\n${marketing.name}\nTim Marketing Kertamulya Residence`;
+    // Format pesan yang benar: user yang menyapa marketing
+    const message = `Assalamu'alaikum Ibu *${marketing.name}*,\n\nSaya *${name}* tertarik dengan Kertamulya Residence dan ingin info lebih lanjut.\n\nBerikut data saya:\n🔹 Kota: ${city}\n🔹 WhatsApp: ${phone}\n🔹 Pekerjaan: ${job}\n🔹 Penghasilan: ${income}\n\nMohon info detail tentang:\n- Promo DP 0%\n- Spesifikasi rumah\n- Cara pengajuan KPR\n\nTerima kasih.`;
     
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${marketing.phone}?text=${encodedMessage}`;
     
+    // Buka WhatsApp
     window.open(whatsappUrl, '_blank');
-    showWaConfirm();
+    
+    // Tampilkan konfirmasi
+    showWaConfirm(marketing.name);
+    
+    // Reset form
     document.getElementById('modalContactForm').reset();
     
     // Tracking
@@ -4224,23 +4230,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===== WHATSAPP CONFIRMATION =====
-window.showWaConfirm = function() {
+window.showWaConfirm = function(marketingName) {
     const modal = document.getElementById('waConfirmModal');
     if (!modal) return;
     
-    // Get the last assigned marketing person
-    const lastMarketer = marketingTeam.reduce((prev, current) => 
-        (prev.counter > current.counter) ? prev : current);
-    
-    // Update modal content
+    // Update modal content dengan nama marketing
     const confirmTitle = modal.querySelector('.wa-confirm-title');
     if (confirmTitle) {
-        confirmTitle.textContent = `Formulir Terkirim ke ${lastMarketer.name}!`;
+        confirmTitle.textContent = `Formulir Terkirim!`;
     }
     
     const confirmSubtitle = modal.querySelector('.wa-confirm-subtitle');
     if (confirmSubtitle) {
-        confirmSubtitle.textContent = `${lastMarketer.name} akan segera menghubungi Anda via WhatsApp`;
+        confirmSubtitle.textContent = `Anda akan diarahkan ke WhatsApp ${marketingName}`;
     }
     
     modal.classList.add('active');
@@ -4258,7 +4260,6 @@ window.showWaConfirm = function() {
             if (count <= 0) {
                 clearInterval(countdownInterval);
                 if (!window.whatsappOpened) {
-                    window.open(`https://wa.me/${lastMarketer.phone}`, '_blank');
                     window.whatsappOpened = true;
                 }
             }
