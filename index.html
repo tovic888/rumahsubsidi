@@ -3737,67 +3737,67 @@ footer {
   </div>
 </div>
 
-  <!-- Form Modal -->
-<div class="form-modal" id="formModal">
-    <div class="form-modal-content">
-        <button class="form-modal-close" onclick="closeFormModal()" aria-label="Close form">&times;</button>
-        <div class="lead-form">
-            <div class="form-title">
-                <h3>FORM BOOKING UNIT</h3>
-                <p>Isi data berikut untuk mendapatkan info booking fee 500rb via WhatsApp</p>
+    <!-- Form Modal -->
+    <div class="form-modal" id="formModal">
+        <div class="form-modal-content">
+            <button class="form-modal-close" onclick="closeFormModal()" aria-label="Close form">&times;</button>
+            <div class="lead-form">
+                <div class="form-title">
+                    <h3>FORM BOOKING UNIT</h3>
+                    <p>Isi data berikut untuk mendapatkan info booking fee 500rb via WhatsApp</p>
+                </div>
+                
+                <form id="modalContactForm">
+                    <div class="form-group">
+                        <label for="modalName">Nama Lengkap</label>
+                        <input type="text" id="modalName" required placeholder="Nama Anda">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modalCity">Kota Asal/Tinggal</label>
+                        <input type="text" id="modalCity" required placeholder="Contoh: Kuningan, Cirebon, Jakarta">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modalPhone">Nomor WhatsApp</label>
+                        <input type="tel" id="modalPhone" required placeholder="0812-3456-7890">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modalJob">Pekerjaan</label>
+                        <select id="modalJob" required>
+                            <option value="" disabled selected>Pilih Pekerjaan</option>
+                            <option value="PNS">PNS</option>
+                            <option value="Karyawan Swasta">Karyawan Swasta</option>
+                            <option value="Wiraswasta">Wiraswasta</option>
+                            <option value="Freelancer">Freelancer</option>
+                            <option value="Mahasiswa">Mahasiswa</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modalIncome">Penghasilan Per Bulan</label>
+                        <select id="modalIncome" required>
+                            <option value="" disabled selected>Pilih Penghasilan</option>
+                            <option value="<3jt">< Rp3 juta</option>
+                            <option value="3-5jt">Rp3-5 juta</option>
+                            <option value="5-10jt">Rp5-10 juta</option>
+                            <option value=">10jt">> Rp10 juta</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">
+                        <i class="fab fa-whatsapp"></i> KIRIM SEKARANG
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-lock"></i> Data Anda aman dan tidak akan disalahgunakan
+                    </p>
+                </form>
             </div>
-            
-            <form id="modalContactForm">
-                <div class="form-group">
-                    <label for="modalName">Nama Lengkap</label>
-                    <input type="text" id="modalName" required placeholder="Nama Anda">
-                </div>
-                
-                <div class="form-group">
-                    <label for="modalCity">Kota Asal/Tinggal</label>
-                    <input type="text" id="modalCity" required placeholder="Contoh: Kuningan, Cirebon, Jakarta">
-                </div>
-                
-                <div class="form-group">
-                    <label for="modalPhone">Nomor WhatsApp</label>
-                    <input type="tel" id="modalPhone" required placeholder="0812-3456-7890">
-                </div>
-                
-                <div class="form-group">
-                    <label for="modalJob">Pekerjaan</label>
-                    <select id="modalJob" required>
-                        <option value="" disabled selected>Pilih Pekerjaan</option>
-                        <option value="PNS">PNS</option>
-                        <option value="Karyawan Swasta">Karyawan Swasta</option>
-                        <option value="Wiraswasta">Wiraswasta</option>
-                        <option value="Freelancer">Freelancer</option>
-                        <option value="Mahasiswa">Mahasiswa</option>
-                        <option value="Lainnya">Lainnya</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="modalIncome">Penghasilan Per Bulan</label>
-                    <select id="modalIncome" required>
-                        <option value="" disabled selected>Pilih Penghasilan</option>
-                        <option value="<3jt">< Rp3 juta</option>
-                        <option value="3-5jt">Rp3-5 juta</option>
-                        <option value="5-10jt">Rp5-10 juta</option>
-                        <option value=">10jt">> Rp10 juta</option>
-                    </select>
-                </div>
-                
-                <button type="submit" class="form-submit">
-                    <i class="fab fa-whatsapp"></i> KIRIM SEKARANG
-                </button>
-                
-                <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #666;">
-                    <i class="fas fa-lock"></i> Data Anda aman dan tidak akan disalahgunakan
-                </p>
-            </form>
         </div>
     </div>
-</div>
 
 <!-- WhatsApp Confirmation Modal - Premium Redesign -->
 <div class="wa-confirm-modal" id="waConfirmModal">
@@ -4108,178 +4108,6 @@ function initializeNotifications() {
     });
 }
 
-// ===== MARKETING TEAM ROTATION SYSTEM =====
-const marketingTeam = [
-    { 
-        name: "Tovic Marie", 
-        phone: "628977771080",
-        counter: 0
-    },
-    { 
-        name: "Rahma", 
-        phone: "6285523613940",
-        counter: 0
-    },
-    { 
-        name: "Syifa", 
-        phone: "6285794058368",
-        counter: 0
-    },
-    { 
-        name: "Royyan", 
-        phone: "62895705105010",
-        counter: 0
-    }
-];
-
-// Get next available marketing person using round-robin
-function getNextMarketing() {
-    // Find the person with least assignments
-    let minCounter = Math.min(...marketingTeam.map(m => m.counter));
-    let availableMarketers = marketingTeam.filter(m => m.counter === minCounter);
-    
-    // If multiple have same count, pick random from them
-    let selected = availableMarketers[Math.floor(Math.random() * availableMarketers.length)];
-    
-    // Increment their counter
-    selected.counter++;
-    
-    // Return a copy to avoid modification
-    return {
-        name: selected.name,
-        phone: selected.phone
-    };
-}
-
-// ===== FORM SUBMISSION HANDLER =====
-function initializeFormSubmission() {
-    const form = document.getElementById('modalContactForm');
-    if (!form) return;
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const name = document.getElementById('modalName').value.trim();
-        const city = document.getElementById('modalCity').value.trim();
-        const phone = document.getElementById('modalPhone').value.trim().replace(/\D/g, '');
-        const job = document.getElementById('modalJob').value;
-        const income = document.getElementById('modalIncome').value;
-        
-        // Validate form
-        if (!name || !city || !phone || !job || !income) {
-            alert('Mohon lengkapi semua data sebelum mengirim');
-            return;
-        }
-        
-        // Process form
-        submitFormData(name, city, phone, job, income);
-    });
-}
-
-// ===== UPDATED FORM SUBMISSION =====
-function submitFormData(name, city, phone, job, income) {
-    const marketing = getNextMarketing();
-    
-    // Format pesan yang benar: user yang menyapa marketing
-    const message = `Assalamu'alaikum Bapak/Ibu *${marketing.name}*,\n\nSaya *${name}* tertarik dengan Kertamulya Residence dan ingin info lebih lanjut.\n\nBerikut data saya:\n🔹 Kota: ${city}\n🔹 WhatsApp: ${phone}\n🔹 Pekerjaan: ${job}\n🔹 Penghasilan: ${income}\n\nMohon info detail tentang:\n- Promo DP 0%\n- Spesifikasi rumah\n- Cara pengajuan KPR\n\nTerima kasih.`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${marketing.phone}?text=${encodedMessage}`;
-    
-    // Buka WhatsApp
-    window.open(whatsappUrl, '_blank');
-    
-    // Tampilkan konfirmasi
-    showWaConfirm(marketing.name);
-    
-    // Reset form
-    document.getElementById('modalContactForm').reset();
-    
-    // Tracking
-    if (typeof fbq !== 'undefined') {
-        fbq('track', 'Lead');
-    }
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'conversion');
-    }
-}
-
-// ===== WHATSAPP CONFIRMATION =====
-window.showWaConfirm = function(marketingName) {
-    const modal = document.getElementById('waConfirmModal');
-    if (!modal) return;
-    
-    // Update modal content dengan nama marketing
-    const confirmTitle = modal.querySelector('.wa-confirm-title');
-    if (confirmTitle) {
-        confirmTitle.textContent = `Formulir Terkirim!`;
-    }
-    
-    const confirmSubtitle = modal.querySelector('.wa-confirm-subtitle');
-    if (confirmSubtitle) {
-        confirmSubtitle.textContent = `Anda akan diarahkan ke WhatsApp ${marketingName}`;
-    }
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    let count = 5;
-    const countdownElement = document.getElementById('countdown');
-    if (countdownElement) {
-        countdownElement.textContent = count;
-        
-        const countdownInterval = setInterval(() => {
-            count--;
-            countdownElement.textContent = count;
-            
-            if (count <= 0) {
-                clearInterval(countdownInterval);
-                if (!window.whatsappOpened) {
-                    window.whatsappOpened = true;
-                }
-            }
-        }, 1000);
-    }
-};
-
-// ===== WHATSAPP CONFIRMATION =====
-window.showWaConfirm = function(marketingName) {
-    const modal = document.getElementById('waConfirmModal');
-    if (!modal) return;
-    
-    // Update modal content dengan nama marketing
-    const confirmTitle = modal.querySelector('.wa-confirm-title');
-    if (confirmTitle) {
-        confirmTitle.textContent = `Formulir Terkirim!`;
-    }
-    
-    const confirmSubtitle = modal.querySelector('.wa-confirm-subtitle');
-    if (confirmSubtitle) {
-        confirmSubtitle.textContent = `Anda akan diarahkan ke WhatsApp ${marketingName}`;
-    }
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    let count = 5;
-    const countdownElement = document.getElementById('countdown');
-    if (countdownElement) {
-        countdownElement.textContent = count;
-        
-        const countdownInterval = setInterval(() => {
-            count--;
-            countdownElement.textContent = count;
-            
-            if (count <= 0) {
-                clearInterval(countdownInterval);
-                if (!window.whatsappOpened) {
-                    window.whatsappOpened = true;
-                }
-            }
-        }, 1000);
-    }
-};
 
 // ===== SMOOTH SCROLLING =====
 function initializeSmoothScrolling() {
@@ -4491,6 +4319,188 @@ if (typeof fbq === 'undefined') {
     fbq('init', 'YOUR_PIXEL_ID');
     fbq('track', 'PageView');
 }
+// ===== MARKETING TEAM ROTATION SYSTEM =====
+const marketingTeam = [
+    { 
+        name: "Taufik Marie", 
+        phone: "628977771080",
+        counter: 0,
+        role: "Digital Manager"
+    },
+    { 
+        name: "Rahma", 
+        phone: "6285523613940",
+        counter: 0,
+        role: "Marketing Executive"
+    },
+    { 
+        name: "Syifa", 
+        phone: "6285794058368",
+        counter: 0,
+        role: "Marketing Executive"
+    },
+    { 
+        name: "Royyan", 
+        phone: "62895705105010",
+        counter: 0,
+        role: "Marketing Executive"
+    }
+];
+
+// Get next available marketing person using round-robin
+function getNextMarketing() {
+    // Find the person with least assignments
+    let minCounter = Math.min(...marketingTeam.map(m => m.counter));
+    let availableMarketers = marketingTeam.filter(m => m.counter === minCounter);
+    
+    // If multiple have same count, pick random from them
+    let selected = availableMarketers[Math.floor(Math.random() * availableMarketers.length)];
+    
+    // Increment their counter
+    selected.counter++;
+    
+    // Return a copy to avoid modification
+    return {
+        name: selected.name,
+        phone: selected.phone,
+        role: selected.role
+    };
+}
+
+// ===== UPDATED FORM SUBMISSION =====
+function submitFormData(name, city, phone, job, income) {
+    const marketing = getNextMarketing();
+    
+    // Format pesan yang lebih menarik dengan emoji dan bold text
+    const message = `Assalamu'alaikum Warahmatullahi Wabarakatuh
+    
+*📌 DATA PEMESANAN KERTAMULYA RESIDENCE*
+
+👤 *Nama Lengkap*: ${name}
+🏙️ *Kota Asal/Tinggal*: ${city}
+📱 *Nomor WhatsApp*: ${phone}
+💼 *Pekerjaan*: ${job}
+💰 *Penghasilan Per Bulan*: ${income}
+
+*📢 INFO PROMO TERBARU*
+🔹 Booking Fee *Rp500.000* saja
+🔹 *DP 0%* via Bank Syariah
+🔹 Cicilan mulai *Rp1 Juta/Bulan*
+🔹 Gratis *Motor Listrik* setelah 6x angsuran
+
+Mohon info detail tentang:
+1. Spesifikasi rumah lengkap
+2. Cara pengajuan KPR Syariah
+3. Jadwal survey lokasi
+
+*🤝 DITANGANI OLEH*
+${marketing.role}: *${marketing.name}*
+    
+Terima kasih. Wassalamu'alaikum Warahmatullahi Wabarakatuh`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${marketing.phone}?text=${encodedMessage}`;
+    
+    // Buka WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Tampilkan konfirmasi
+    showWaConfirm(marketing.name);
+    
+    // Reset form
+    document.getElementById('modalContactForm').reset();
+    
+    // Tracking
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead');
+    }
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'conversion');
+    }
+}
+
+// ===== WHATSAPP CONFIRMATION =====
+window.showWaConfirm = function(marketingName) {
+    const modal = document.getElementById('waConfirmModal');
+    if (!modal) return;
+    
+    // Update modal content dengan nama marketing
+    const confirmTitle = modal.querySelector('.wa-confirm-title');
+    if (confirmTitle) {
+        confirmTitle.textContent = `Formulir Terkirim!`;
+    }
+    
+    const confirmSubtitle = modal.querySelector('.wa-confirm-subtitle');
+    if (confirmSubtitle) {
+        confirmSubtitle.textContent = `Anda akan diarahkan ke WhatsApp ${marketingName}`;
+    }
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    let count = 5;
+    const countdownElement = document.getElementById('countdown');
+    if (countdownElement) {
+        countdownElement.textContent = count;
+        
+        const countdownInterval = setInterval(() => {
+            count--;
+            countdownElement.textContent = count;
+            
+            if (count <= 0) {
+                clearInterval(countdownInterval);
+                if (!window.whatsappOpened) {
+                    window.whatsappOpened = true;
+                }
+            }
+        }, 1000);
+    }
+};
+
+// Fungsi untuk menutup modal konfirmasi WhatsApp
+window.closeWaConfirm = function() {
+    const modal = document.getElementById('waConfirmModal');
+    if (!modal) return;
+    
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    
+    // Hentikan countdown jika masih berjalan
+    const countdownElement = document.getElementById('countdown');
+    if (countdownElement) {
+        countdownElement.textContent = '0';
+    }
+};
+
+// Event listener untuk tombol close
+document.addEventListener('DOMContentLoaded', function() {
+    const closeButtons = document.querySelectorAll('.wa-confirm-close, .close-btn');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', closeWaConfirm);
+    });
+});
+
+// ===== CACHE BUSTING =====
+// Tambahkan parameter versi pada CSS dan JS
+document.addEventListener('DOMContentLoaded', function() {
+    const version = '1.0.3'; // Update versi ini setiap ada perubahan
+    
+    // Update CSS
+    const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+    stylesheets.forEach(sheet => {
+        if (sheet.href.includes('style.css')) {
+            sheet.href = sheet.href.split('?')[0] + '?v=' + version;
+        }
+    });
+    
+    // Update JS
+    const scripts = document.querySelectorAll('script[src]');
+    scripts.forEach(script => {
+        if (script.src.includes('main.js')) {
+            script.src = script.src.split('?')[0] + '?v=' + version;
+        }
+    });
+});
   
 </script>
 </body>
