@@ -4182,7 +4182,7 @@ function submitFormData(name, city, phone, job, income) {
     const marketing = getNextMarketing();
     
     // Format pesan yang benar: user yang menyapa marketing
-    const message = `Assalamu'alaikum Ibu *${marketing.name}*,\n\nSaya *${name}* tertarik dengan Kertamulya Residence dan ingin info lebih lanjut.\n\nBerikut data saya:\n🔹 Kota: ${city}\n🔹 WhatsApp: ${phone}\n🔹 Pekerjaan: ${job}\n🔹 Penghasilan: ${income}\n\nMohon info detail tentang:\n- Promo DP 0%\n- Spesifikasi rumah\n- Cara pengajuan KPR\n\nTerima kasih.`;
+    const message = `Assalamu'alaikum Bapak/Ibu *${marketing.name}*,\n\nSaya *${name}* tertarik dengan Kertamulya Residence dan ingin info lebih lanjut.\n\nBerikut data saya:\n🔹 Kota: ${city}\n🔹 WhatsApp: ${phone}\n🔹 Pekerjaan: ${job}\n🔹 Penghasilan: ${income}\n\nMohon info detail tentang:\n- Promo DP 0%\n- Spesifikasi rumah\n- Cara pengajuan KPR\n\nTerima kasih.`;
     
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${marketing.phone}?text=${encodedMessage}`;
